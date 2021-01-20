@@ -1,49 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Task from './Task';
+import './DisplayTodo.css';
 
 const DisplayTodo = () => { 
   const [ task, setTask ] = useState('')
-  const [ taskList, setTaskList ] = useState([])
-  
-  //TODO Delete it later
-  useEffect(() => {
-    const checkbox = document.getElementById("mycheck")
-    if (!checkbox) {
-      console.log('There is no checkboxes')
-    } else {
-      console.log(checkbox.checked)
+  //TODO REMOVE these
+  const [ taskList, setTaskList ] = useState([
+    {
+      title: 'Get something to eat.',
+      completed: false
+    },
+    {
+      title: 'Do some school work.',
+      completed: false
     }
-    const interval = setInterval(() => {
-      console.log('Every damn second')
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
+  ])   
   
-  const renderedList  = taskList.map(({ title }, i) => {
-          return (
-            <div key={i} className="item">
-              <input id={i} type="checkbox" />
-              {title}
-            </div>
-          );
-        }) 
+  const filterTask = (id) => {
+    const newObj = [...taskList]
+    if (newObj[id].completed) {
+      newObj[id].completed = false
+      setTaskList(newObj);
+    } else {
+      newObj[id].completed = true
+      setTaskList(newObj);
+    }
+    console.log('Task = ', newObj[id])
+  }
 
   const onButtonClick = () => {
-    //TODO: fix setTaskList
-    //Create a new object 
-    //Then add it to set method
     const newObj = [...taskList, { title: task, completed: false }]
     setTaskList(newObj)
   };
 
   return (
-    <div className="ui container">
+    <div className="holder">
       <div className="ui input focus">
         <input value={task} placeholder="Enter task" onChange={(e) => setTask(e.target.value)} />
         <button className="ui button primary" onClick={onButtonClick} >Add</button>
       </div>
       <div className="ui list">
-        {renderedList} 
-      </div>
+        {taskList.map((task, index) => {
+          return (
+            <Task 
+              filterTask={filterTask}
+              task={task}  
+              key={index}
+              id={index}
+            />
+          );
+        })}
+      </div> 
     </div>
   )
 }
