@@ -5,16 +5,10 @@
 }
 
 body {
-  background-image: url('./background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  overflow: hidden;
+  background: linear-gradient(to left, rgb(43, 46, 43),rgba(43, 46, 43, 0.5));
 }
 
 .holder {
-  background-color: rgb(124 123 128 / 51%);
-  border: 2px solid grey;
   width: 40rem;
   margin: auto;
   display: flex;

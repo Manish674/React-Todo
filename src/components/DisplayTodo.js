@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import _ from 'lodash';
 import Task from './Task';
 import './DisplayTodo.css';
 
@@ -16,6 +17,7 @@ const DisplayTodo = () => {
     }
   ])   
   
+  //NOTE This func toggles crossed line font / text decoration
   const filterTask = (id) => {
     const newObj = [...taskList]
     if (newObj[id].completed) {
@@ -26,6 +28,13 @@ const DisplayTodo = () => {
       setTaskList(newObj);
     }
     console.log('Task = ', newObj[id])
+  }
+  
+  //NOTE This deltes the tasks
+  const deleteTask = (id) => {
+    const newObject = [...taskList]
+    _.omit(newObject[id], ['title', 'completed'])
+    setTaskList(newObject)
   }
 
   const onButtonClick = () => {
@@ -44,6 +53,7 @@ const DisplayTodo = () => {
           return (
             <Task 
               filterTask={filterTask}
+              deleteTask={deleteTask}
               task={task}  
               key={index}
               id={index}
