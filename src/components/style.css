@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1f1a20;
+  color: #c3bbd0;
+}
+
+.add-button {
+  background-color: #9147fb;
+  border: 0px;
+  height: 2rem;
+  width: 3rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
+
+.holder {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  margin-bottom: 1rem;
+}
+
+.list {
+  border-radius: 5px;
+  background-color: #4e3b4e;
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.task {
+  background-color: #615873;
+  margin: 0.5rem 0.5rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
